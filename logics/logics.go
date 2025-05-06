@@ -46,18 +46,14 @@ func Map[T any, R any](slice []T, transform func(T) R) []R {
 	return result
 }
 
-// DivideSlice divides each element in a slice by a divisor
-// BUG: No check for division by zero
 func DivideSlice(numbers []int, divisor int) []int {
 	result := make([]int, len(numbers))
 	for i, num := range numbers {
-		result[i] = num / divisor // Potential division by zero if divisor is 0
+		result[i] = num / divisor
 	}
 	return result
 }
 
-// GetNthElement returns the nth element from a slice
-// BUG: No bounds checking
 func GetNthElement(slice []string, index int) string {
-	return slice[index] // Potential out of bounds access if index >= len(slice) or index < 0
+	return slice[index]
 }
