@@ -22,16 +22,27 @@ func Divide(a, b int) (int, error) {
 	if b == 0 {
 		return 0, errors.New("division by zero")
 	}
+
+	if b < 0 {
+		a = -a
+		b = -b
+	}
+
 	return a / b, nil
 }
 
 // Power returns a raised to the power of b
 func Power(a, b int) int {
-	result := 1
-	for i := 0; i < b; i++ {
-		result *= a
+	if b == 0 {
+		return 1
 	}
-	return result
+
+	if b%2 == 0 {
+		half := Power(a, b/2)
+		return half * half
+	} else {
+		return a * Power(a, b-1)
+	}
 }
 
 // SquareRoot returns the integer square root of a number
